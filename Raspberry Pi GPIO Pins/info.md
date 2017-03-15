@@ -1,9 +1,9 @@
-##Invocation Name
+## Invocation Name
 
 g.p.i.o info
 
-##Intent Schema
-
+## Intent Schema
+```
 {
   "intents": [
     {
@@ -44,11 +44,12 @@ g.p.i.o info
     }
   ]
 }
+```
 
+## Slots
 
-##Slots
-
-###physicalPinNumber
+### physicalPinNumber
+```
 one
 two
 three
@@ -89,9 +90,10 @@ thirty seven
 thirty eight
 thirty nine
 forty
+```
 
-
-###wiringPiPinNumber
+### wiringPiPinNumber
+```
 zero
 one
 two
@@ -124,9 +126,10 @@ twenty eight
 twenty nine
 thirty
 thirty one
+```
 
-##Sample Utterances
-
+## Sample Utterances
+```
 GetGpioFromPinNumber what is on pin {physicalPin}
 GetGpioFromPinNumber what is pin {physicalPin}
 GetGpioFromPinNumber what's on pin {physicalPin}
@@ -165,3 +168,4 @@ GetGroundPinNumber what pin is ground on
 GetGroundPinNumber what are the ground pins
 GetGroundPinNumber what physical pin is ground on
 GetGroundPinNumber what are the ground physical pins
+```
