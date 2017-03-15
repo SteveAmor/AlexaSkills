@@ -10,8 +10,6 @@ Find out what is on each physical pin, where a specific Wiring Pi pin is, where 
 
 ### Example Phrases
 
-Alexa, ask GPIO info what's on physical pin 5
-
-Alexa, ask GPIO info where's GPIO 12
-
+Alexa, ask GPIO info what's on physical pin 5  
+Alexa, ask GPIO info where's GPIO 12  
 Alexa, ask GPIO info where's Wiring Pi 27
