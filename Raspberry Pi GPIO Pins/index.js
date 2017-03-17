@@ -88,9 +88,39 @@ var wiringPi2Pin = [
     "28"
 ];
 
+var gpio2Pin = [
+        "27",
+        "28",
+        "3",
+        "5",
+        "7",
+        "29",
+        "31",
+        "26",
+        "24",
+        "22",
+        "21",
+        "19",
+        "23",
+        "32",
+        "33",
+        "8",
+        "10",
+        "36",
+        "11",
+        "12",
+        "35",
+        "38",
+        "40",
+        "15",
+        "16",
+        "18",
+        "22"
+];
+
 exports.handler = function(event, context, callback) {
     var alexa = Alexa.handler(event, context);
-    alexa.APP_ID = APP_ID;
+    alexa.appId = APP_ID;
     alexa.registerHandlers(handlers);
     alexa.execute();
 };
@@ -143,6 +173,32 @@ var handlers = {
         cardText = speechOutput;
         this.emit(':tellWithCard', speechOutput, pinName, cardText);
     },
+    'GetGpioPinNumber': function () {
+        var gpioSlot = this.event.request.intent.slots.gpioPin;
+        var userPin;
+        var pinName;
+        var cardText;
+        var speechOutput;
+        var reprompt;
+        if (gpioSlot && gpioSlot.value) {
+            userPin = gpioSlot.value.toLowerCase();
+        }
+        if (userPin === undefined || gpio2Pin[userPin] === undefined) {
+            speechOutput = "I'm sorry, I didn't recognise the pin you asked for";
+            reprompt = "Please try again";
+            this.emit(':ask', speechOutput, reprompt);           
+        }
+        speechOutput = "g.p.i.o " + userPin + " is physical pin " + gpio2Pin[userPin];
+        pinName = "GPIO " + userPin;
+        cardText = "GPIO " + userPin + " is physical pin " + gpio2Pin[userPin];
+        if (userPin < 2) {
+            cardText = cardText + "\nThis pin is generally reserved for I2C communication with an EEPROM.";
+        }
+        if (userPin < 4) {
+            cardText = cardText + "\nBe aware that this pin has a fixed 1.8kohm pull up resistor to 3.3v.";
+        }
+        this.emit(':tellWithCard', speechOutput, pinName, cardText);
+    },
     'GetThreeVPinNumber': function () {
         var speechOutput = "3 point 3 volts is on physical pin 1 and physical pin 17";
         var pinName = "3.3V";
@@ -171,6 +227,11 @@ var handlers = {
     },
     'AMAZON.StopIntent': function () {
         this.emit(':tell', 'Goodbye!');
-    }
+    },
+    'SessionEndedRequest':function () {
+        console.log('session ended!');
+    },
+    'Unhandled': function () {
+        this.emit(':ask','I\'m sorry, but I\'m not sure what you asked me... What can I help you with?');
+    } 
 };
-

@@ -25,6 +25,15 @@ g.p.i.o info
       ]
     },
     {
+      "intent": "GetGpioPinNumber",
+      "slots": [
+        {
+          "name": "gpioPin",
+          "type": "gpioPinNumber"
+        }
+      ]
+    },
+    {
       "intent": "GetThreeVPinNumber"
     },
     {
@@ -128,6 +137,36 @@ thirty
 thirty one
 ```
 
+### wiringPiPinNumber
+```
+zero
+one
+two
+three
+four
+five
+six
+seven
+eight
+nine
+ten
+eleven
+twelve
+thirteen
+fourteen
+fifteen
+sixteen
+seventeen
+eighteen
+nineteen
+twenty
+twenty one
+twenty two
+twenty three
+twenty four
+twenty five
+```
+
 ## Sample Utterances
 ```
 GetGpioFromPinNumber what is on pin {physicalPin}
@@ -147,6 +186,13 @@ GetWiringPiPinNumber wiring pi {wiringPiPin}
 GetWiringPiPinNumber where is wiring pi pin {wiringPiPin}
 GetWiringPiPinNumber where's wiring pi pin {wiringPiPin}
 GetWiringPiPinNumber wiring pi pin {wiringPiPin}
+GetGpioPinNumber where is gpio {gpioPin}
+GetGpioPinNumber where gpio {gpioPin} is
+GetGpioPinNumber where's gpio {gpioPin}
+GetGpioPinNumber gpio {gpioPin}
+GetGpioPinNumber where is gpio pin {gpioPin}
+GetGpioPinNumber where's gpio pin {gpioPin}
+GetGpioPinNumber gpio pin {gpioPin}
 GetThreeVPinNumber where's three point three volts
 GetThreeVPinNumber where is three point three volts
 GetThreeVPinNumber where three point three volts is
