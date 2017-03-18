@@ -37,8 +37,8 @@ var pin2name = [
     ["g.p.i.o 8 or wiring pi 10", "GPIO 8 or Wiring Pi 10\nIt can also be used as SPI0 CE0"],
     ["ground", "ground."],
     ["g.p.i.o 7 or wiring pi 11", "GPIO 7 or Wiring Pi 11\nIt can also be used as SPI0 CE1"],
-    ["reserved for eye squared sea communication with an e e prom", "generally reserved for I2C communication with an EEPROM.\n It can be used as I2C0 SDA\nBe aware that this pin has a fixed 1.8kohm pull up resistor to 3.3v."],
-    ["reserved for eye squared sea communication with an e e prom", "generally reserved for I2C communication with an EEPROM.\n It can be used as I2C0 SCL\nBe aware that this pin has a fixed 1.8kohm pull up resistor to 3.3v."],
+    ["reserved for eye squared sea communication with an e e prom", "generally reserved for I2C communication with an EEPROM.\nIt can be used as I2C0 SDA or GPIO 0"],
+    ["reserved for eye squared sea communication with an e e prom", "generally reserved for I2C communication with an EEPROM.\nIt can be used as I2C0 SCL or GPIO 1"],
     ["g.p.i.o 5 or wiring pi 21", "GPIO 5 or Wiring Pi 21"],
     ["ground", "ground."],
     ["g.p.i.o 6 or wiring pi 22", "GPIO 6 or Wiring Pi 22"],
@@ -194,7 +194,7 @@ var handlers = {
         if (userPin < 2) {
             cardText = cardText + "\nThis pin is generally reserved for I2C communication with an EEPROM.";
         }
-        if (userPin < 4) {
+        if (userPin == 2 || userPin == 3) {
             cardText = cardText + "\nBe aware that this pin has a fixed 1.8kohm pull up resistor to 3.3v.";
         }
         this.emit(':tellWithCard', speechOutput, pinName, cardText);
